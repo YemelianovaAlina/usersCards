@@ -6,10 +6,12 @@ module.exports = {
     output: {
         filename: "main.js",
         path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     devServer: {
+        watchFiles: ["src/*.html"],
         static: {
-            directory: path.join(__dirname, 'public'),
+            directory: path.join(__dirname, 'src'),
         },
         compress: true,
         port: 9000,
@@ -23,9 +25,14 @@ module.exports = {
                     "css-loader",
                     "sass-loader"
                 ]
-            }
+            },
         ]
     },
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [new HtmlWebpackPlugin(
+        {
+            template: path.join(__dirname,'src','index.html') ,
+            filename:'index.html'
+        }
+    )],
     mode: 'development',
 }
