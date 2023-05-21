@@ -1,5 +1,93 @@
-$color: #962764;
+$baseColor: #082a5e;
+$activeIconFilter: invert(15%) sepia(89%) saturate(1151%) hue-rotate(188deg) brightness(86%) contrast(100%);
+$backgroundColor: #f7ebf0;
+$pageBackground: linear-gradient(152deg, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+$shadowColor: #082a5ec7;
+
+$breakpointTablet: 820px;
 
 body {
-  background-color: $color;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  background: $pageBackground;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.gridContainer {
+  padding: 5%;
+  display: grid;
+  gap: 25px;
+  grid-template: 500px / repeat(3, minmax(100px, 350px));
+  grid-auto-rows: 500px;
+  justify-content: center;
+}
+
+.card {
+  display: grid;
+  grid-auto-rows: 50% 1fr 30%;
+  border-radius: 10%;
+  border-width: 1px 1px 20px 1px;
+  border-color: $baseColor;
+  border-style: solid;
+  background-color: $backgroundColor;
+  box-shadow: 1px 4px 7px $shadowColor;
+
+  &__avatar {
+    position: relative;
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+  }
+
+  &__photo {
+    border-radius: 50%;
+  }
+
+  .circle {
+    position: absolute;
+    top: -6px;
+    left: -2px;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    border: 3px solid $baseColor;
+    border-radius: 50%;
+    border-bottom-style: none;
+    border-left-style: none;
+  }
+
+  &__info {
+    justify-self: center;
+    text-align: center;
+  }
+
+  &__icons {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: grid;
+    grid-template: 25px /repeat(6, auto);
+    justify-content: center;
+    column-gap: 10px;
+    align-self: center;
+
+    li {
+      cursor: pointer;
+    }
+  }
+
+  &__icon--active {
+    filter: $activeIconFilter;
+  }
+}
+
+@media (max-width: $breakpointTablet) {
+  .gridContainer {
+    grid-template: 500px / repeat(auto-fill, minmax(300px, 325px));
+  }
 }
