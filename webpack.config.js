@@ -5,12 +5,12 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: "main.js",
+        filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
     devServer: {
-        watchFiles: ["src/*.html"],
+        watchFiles: ['src/*.html'],
         static: {
             directory: path.join(__dirname, 'src'),
         },
@@ -22,21 +22,21 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    "style-loader",
-                    "css-loader",
-                    "sass-loader"
-                ]
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                ],
             },
-        ]
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin(
             {
                 template: path.join(__dirname, 'src', 'index.html'),
-                filename: 'index.html'
-            }
+                filename: 'index.html',
+            },
         ),
         new ESLintPlugin(),
     ],
     mode: 'development',
-}
+};
