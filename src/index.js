@@ -1,2 +1,2 @@
-import './modules/request';
+import './modules/app';
 import './styles.scss';
