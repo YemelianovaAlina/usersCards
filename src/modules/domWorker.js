@@ -2,6 +2,7 @@ import dateParser from './helpers';
 
 const container = document.querySelector('.gridContainer');
 const cardTemplate = document.querySelector('.singleCard');
+const errorTemplate = document.querySelector('.errorMessage');
 const setDataAttr = (elem, attr) => {
     Object.keys(attr)
         .forEach(key => {
@@ -9,7 +10,7 @@ const setDataAttr = (elem, attr) => {
         });
 };
 
-const renderCards = data => {
+export const renderCards = data => {
     data.forEach((card, idx) => {
         const cardElement = document.importNode(cardTemplate.content, true);
         cardElement.querySelector('.card__avatar img').src = card.picture.large;
@@ -49,6 +50,12 @@ const renderCards = data => {
     });
 };
 
+export const renderErrorMessage = message => {
+    const errorElement = document.importNode(errorTemplate.content, true);
+    errorElement.textContent = `Woops, ${message}`;
+    container.append(errorElement);
+};
+
 const classNameToggle = (removeFrom, addTo, className) => {
     removeFrom.classList.remove(className);
     addTo.classList.add(className);
@@ -75,5 +82,3 @@ container.addEventListener('click', event => {
         rewriteData(desc, descContent);
     }
 });
-
-export default renderCards;

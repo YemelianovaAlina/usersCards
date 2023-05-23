@@ -1,5 +1,5 @@
 import sendHttpRequest from './request';
-import renderCards from './domWorker';
+import { renderCards, renderErrorMessage } from './domWorker';
 
 const URL = 'https://randomuser.me/api/?results=5';
 
@@ -8,7 +8,7 @@ const fetchPosts = async url => {
         const data = await sendHttpRequest(url);
         renderCards(data.results);
     } catch (error) {
-        console.log(error.message);
+        renderErrorMessage(error.message);
     }
 };
 
