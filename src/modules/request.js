@@ -1,5 +1,3 @@
-const URL = 'https://randomuser.me/apie/?results=5';
-
 async function sendHttpRequest(url) {
     const response = await fetch(url);
 
@@ -12,13 +10,4 @@ async function sendHttpRequest(url) {
     return data;
 }
 
-const fetchPosts = async url => {
-    try {
-        const data = await sendHttpRequest(url);
-        console.log(data);
-    } catch (error) {
-        console.log(error.message);
-    }
-};
-
-fetchPosts(URL);
+export default sendHttpRequest;

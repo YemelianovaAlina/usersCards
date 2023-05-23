@@ -1,14 +1,18 @@
+$font: Verdana, sans-serif;
+$accentFontSize: 18px;
 $baseColor: #082a5e;
 $activeIconFilter: invert(15%) sepia(89%) saturate(1151%) hue-rotate(188deg) brightness(86%) contrast(100%);
 $backgroundColor: #f7ebf0;
 $pageBackground: linear-gradient(152deg, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
 $shadowColor: #082a5ec7;
 
+
 $breakpointTablet: 820px;
 
 body {
   padding: 0;
   margin: 0;
+  font-family: $font;
 }
 
 html {
@@ -64,6 +68,11 @@ html {
   &__info {
     justify-self: center;
     text-align: center;
+
+    .info__title {
+      font-weight: 600;
+      font-size: $accentFontSize;
+    }
   }
 
   &__icons {
@@ -78,6 +87,10 @@ html {
 
     li {
       cursor: pointer;
+
+      img {
+        pointer-events: none;
+      }
     }
   }
 
